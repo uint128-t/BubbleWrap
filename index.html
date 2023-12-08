@@ -10,6 +10,7 @@
 <body>
     <div style="display:inline-block;outline:black solid 1px;" id="box">
         <h1 style="font-family:Helvetica;text-align: center;margin:0;padding:0;margin-bottom:10px;font-weight: normal;">Bubble Wrap!</h1>
+        <hr>
         <div id="container"></div>
         <button onclick="document.querySelectorAll('.bubble-clicked').forEach(e=>e.classList.remove('bubble-clicked'))">Reset</button>
     </div>
@@ -47,6 +48,8 @@
         transform:translate(-50%,-50%);
         text-align:center;
         padding:10px;
+        padding-left:30px;
+        padding-right:30px;
     }
     button{
         padding:5px;
