@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Bubble Wrap</title>
+</head>
+
+<body>
+    <div style="display:inline-block;outline:black solid 1px;" id="box">
+        <h1 style="font-family:Helvetica;text-align: center;margin:0;padding:0;margin-bottom:10px;font-weight: normal;">Bubble Wrap!</h1>
+        <div id="container"></div>
+        <button onclick="document.querySelectorAll('.bubble-clicked').forEach(e=>e.classList.remove('bubble-clicked'))">Reset</button>
+    </div>
+    <script>
+        addEventListener("DOMContentLoaded",()=>{        
+            var container = document.getElementById("container")
+            for (let i=0;i<5;i++){
+                let oddrow = container.appendChild(document.createElement("div"))
+                let evenrow = container.appendChild(document.createElement("div"))
+                oddrow.classList.add("row-odd")
+                evenrow.classList.add("row-even")
+                for (let j=0;j<11;j++)
+                    oddrow.appendChild(document.createElement("div")).classList.add("bubble")
+                for (let j=0;j<10;j++)
+                    evenrow.appendChild(document.createElement("div")).classList.add("bubble")
+            }
+        })
+        addEventListener("click",(e)=>{
+            if (e.target.classList.contains("bubble")){
+                e.target.classList.add("bubble-clicked")
+            }
+        }) 
+    </script>
+</body>
+<style>
+    #container{
+        width:500px;
+        height:500px;
+        background-color: #eee;
+        clip-path: inset(0 0 0 0 round 10px)
+    }
+    #box{
+        margin-left:50vw;
+        margin-top:50vh;
+        transform:translate(-50%,-50%);
+        text-align:center;
+        padding:10px;
+    }
+    button{
+        padding:5px;
+        background-color: white;
+        border:1px solid black;
+        border-radius: 10px;
+        margin-top:10px;
+        font-size:20px;
+        padding-left:10px;
+        padding-right:10px;
+        transition-duration:0.3s;
+    }
+    button:hover{
+        color:#008cffaa;
+        border-color: #008cffaa;
+    }
+    body,html{
+        margin:0;
+        padding:0;
+        /* height:0; */
+        overflow:hidden;
+    }
+    .row-odd{
+        width:600px;
+        transform:translateX(-25px);
+        height:50px;
+    }
+    .row-even{
+        height:50px;
+        width:600px;
+    }
+    .bubble{
+        width: 48px;
+        height: 48px;
+        float:left;
+        border-radius:50%;
+        box-shadow: inset -5px -5px 15px 5px rgba(0,0,0,0.2);
+        background-color: white;
+        margin:1px;
+    }
+    .bubble-clicked{
+        animation: bubble-clicked 0.7s ease-out;
+        box-shadow: inset 0px 0px 5px 5px rgba(0,0,0,0.15);
+        transition-duration: 1s;
+    }
+    @keyframes bubble-clicked{
+        0%{
+            box-shadow: inset -5px -5px 15px 5px rgba(0,0,0,0.2);
+        }
+        95%{
+            box-shadow: inset 0px 0px 15px 5px rgba(0,0,0,0.2);
+        }
+    }
+</style>
+</html>
